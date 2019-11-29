@@ -1,0 +1,32 @@
+[{
+	"id":1,
+	"text":"诊断信息"
+},{
+	"id":2,
+	"text":"处方"
+},{
+	"id":3,
+	"text":"病例",
+	"iconCls":"icon-bingli"
+},{
+	"id":4,
+	"text":"疾病请假单"
+},{
+	"id":5,
+	"text":"知情同意书",
+	"state":"open",
+	"children":[]
+},{
+	"id":6,
+	"text":"技诊报告",
+	"children":[{
+		"id":7,
+		"text":"检验结果",
+		"checked":true
+	},{
+		"id":8,
+		"text":"PASC影像报告",
+		"state":"open"
+	}]
+}
+]

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="Cmedicine" table="ops_cmedicine">
+    		<id name="cm_id" column="cm_id">
+    			<generator class="native"></generator>
+    		</id>
+    		
+    		<!-- 表示处方多对一药物表 -->
+    		<property name="cm_group"></property>
+    		<property name="cm_prescription"></property>
+    		<property name="cm_mg"></property>
+    		<property name="cm_unit"></property>
+    		<property name="cm_pathway"></property>
+    		<property name="cm_frequency"></property>
+    		<property name="cm_days"></property>
+    		<property name="cm_totalCount"></property>
+    		<property name="cm_drug_message"></property>
+    		<property name="cm_drug_name"></property>
+    		<property name="cm_drug_price"></property>
+    		
+    		
+    		<!-- 处方表多对一挂号病人表 -->
+    		<many-to-one name="cm_registration" column="reg_id" class="Registration"></many-to-one>
+    		<!-- 处方表多对一药物表 -->
+    		<many-to-one name="cm_drugMessage2" column="drug_id" class="DrugMessage2"></many-to-one>
+    	</class>
+    </hibernate-mapping>

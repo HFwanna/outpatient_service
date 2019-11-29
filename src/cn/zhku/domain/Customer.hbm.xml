@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="Customer" table="cst_customer" lazy="true">
+    		<id name="cust_id" column="cust_id">
+    			<generator class="native"></generator>
+    		</id>
+    		<!-- 可选java类型:type="java.lang.String" hibernate类型:type="string" 
+    			not-null:配置该属性列是否不能为空，默认：false（即可以为空）
+    			length:配置数据库列的长度。默认值：当前数据库类型最大长度
+    			column：默认使用属性名，即使用name的名字
+    		-->
+    		<property name="cust_name" column="cust_name">
+    			<!--数据库类型: <column name="cust_name" sql-type="varchar"></column> -->
+    		</property>
+    		<!-- <property name="cust_source" column="cust_source"></property>
+    		<property name="cust_industry" column="cust_industry"></property>
+    		<property name="cust_level" column="cust_level"></property> -->
+    		<property name="cust_linkman" column="cust_linkman"></property>
+    		<property name="cust_phone" column="cust_phone"></property>
+    		<property name="cust_mobile" column="cust_mobile"></property>
+    		
+    		<many-to-one name="cust_source" class="BaseDict" column="cust_source"></many-to-one>
+    		<many-to-one name="cust_industry" class="BaseDict" column="cust_industry"></many-to-one>
+    		<many-to-one name="cust_level" class="BaseDict" column="cust_level"></many-to-one>
+    		<set name="linkMans" cascade="save-update" inverse="true">
+    			<key column="cust_id"></key>
+    			<one-to-many class="LinkMan"/>
+    		</set>
+    		
+    		<!-- 用户一对多条拜访记录 -->
+    		<set name="saleVisits">
+    			<key column="visit_cust_id"></key>
+    			<one-to-many class="SaleVisit"/>
+    		</set>
+    	</class>
+    </hibernate-mapping>
+
+

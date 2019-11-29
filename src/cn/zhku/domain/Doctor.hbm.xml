@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="Doctor" table="ops_doctor">
+    		<id name="doc_id" column="doc_id">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="doc_name" column="doc_name"></property>
+    		<property name="doc_password" column="doc_password"></property>
+    		<property name="doc_fee" column="doc_fee"></property>
+    		
+    		<!-- 诊断表可以维护医生的，也可以通过医生找到诊断信息 -->
+    		<set name="diseaseTypes" cascade="save-update">
+    			<key column="doc_id"></key>
+    			<one-to-many class="DiseaseType"/>
+    		</set>
+    		<set name="prescriptions" cascade="save-update">
+    			<key column="doc_id"></key>
+    			<one-to-many class="Prescription"/>
+    		</set>
+    	</class>
+    
+    
+    
+    
+    
+    
+    </hibernate-mapping>

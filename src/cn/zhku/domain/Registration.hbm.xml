@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="Registration" table="ops_registration">
+    		<id name="reg_id" column="reg_id">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="reg_phone"></property>
+    		<property name="reg_serialNumber"></property>
+    		<property name="reg_age"></property>
+    		<property name="reg_patientName"></property>
+    		<property name="reg_card"></property>
+    		<property name="reg_sex"></property>
+    		<property name="reg_state"></property>
+    		<property name="reg_date"></property>
+    		<property name="reg_diseaseType"></property>
+    		
+    		<!-- 表示对应处方，挂号病人对象一对多处方 -->
+    		<set name="prescription" cascade="save-update" inverse="true">
+    			<key column="reg_id"></key>
+    			<one-to-many class="Prescription"/>
+    		</set>
+    		
+    		<!-- 表示和挂号病人一对多医生诊断 -->
+    		<set name="diseaseTypes" cascade="save-update" inverse="true">
+    			<key column="reg_id"></key>
+    			<one-to-many class="DiseaseType"/>
+    		</set>
+    		
+    		<!-- name本身对应属性值（对内属性）
+    			column对应自身数据库字段（对内数据库）
+    			class对应关联类（对外类）
+    		 -->
+    		<!-- <many-to-one name="customer" column="cust_id" class="Customer"></many-to-one> -->
+    	</class>
+    
+    </hibernate-mapping>

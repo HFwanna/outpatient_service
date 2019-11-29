@@ -1,0 +1,36 @@
+[{
+	"id":1,
+	"text":"全院模板",
+	"state":"open",
+	"children":[{
+		"id":2,
+		"text":"流感处方单",
+		"checked":true
+	},{
+		"id":3,
+		"text":"普通流感处方单",
+		"checked":true
+	},{
+		"id":4,
+		"text":"发烧降温处方",
+		"checked":true
+	},{
+		"id":5,
+		"text":"咽喉炎处方单",
+		"checked":true
+	}]
+},{
+	"id":6,
+	"text":"个人模板",
+	"children":[{
+		"id":7,
+		"text":"常用药模板",
+		"checked":true
+	},{
+		"id":8,
+		"text":"注射常用药",
+		"state":"open",
+		"checked":true
+	}]
+}
+]

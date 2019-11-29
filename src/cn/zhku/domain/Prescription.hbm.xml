@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="Prescription" table="ops_prescription">
+    		<id name="pre_id" column="pre_id">
+    			<generator class="native"></generator>
+    		</id>
+    		
+    		<!-- 表示处方多对一药物表 -->
+    		<property name="pre_group"></property>
+    		<property name="pre_prescription"></property>
+    		<property name="pre_mg"></property>
+    		<property name="pre_unit"></property>
+    		<property name="pre_pathway"></property>
+    		<property name="pre_frequency"></property>
+    		<property name="pre_days"></property>
+    		<property name="pre_totalCount"></property>
+    		<property name="pre_drug_message"></property>
+    		<property name="pre_drug_name"></property>
+    		<property name="pre_drug_price"></property>
+    		<property name="pre_drug_id"></property>
+    		
+    		
+    		
+    		
+    		<!-- 处方表多对一挂号病人表 -->
+    		<many-to-one name="pre_registration" column="reg_id" class="Registration"></many-to-one>
+    		<!-- 处方表多对一药物表 -->
+    		<many-to-one name="pre_drugMessage" column="drug_id" class="DrugMessage"></many-to-one>
+    		<!-- 处方表多对一医生表 -->
+    		<many-to-one name="doctor" class="Doctor" column="doc_id"></many-to-one>
+    	</class>
+    </hibernate-mapping>

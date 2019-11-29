@@ -1,0 +1,17 @@
+{
+   "menus" : [{"icon" : "icon-sys","menuid" : "1","menuname" : "客户","url" : "","menus" : [
+                 {"icon" : "icon-log","menuid" : "1_1","menuname" : "客户列表","url" : "views/customer.html"
+                 },
+                 {"icon" : "icon-log","menuid" : "1_2","menuname" : "客户拜访","url" : "views/salevisit.html"
+                 }
+                ]
+               },
+               {"icon" : "icon-sys","menuid" : "2","menuname" : "用户","url" : "","menus" : [
+                 {"icon" : "icon-log","menuid" : "2_1","menuname" : "用户列表","url" : "views/user.html"
+                 },
+                 {"icon" : "icon-log","menuid" : "2_2","menuname" : "用户拜访","url" : "views/user.html"
+                 }
+                ]
+               }
+             ]
+}

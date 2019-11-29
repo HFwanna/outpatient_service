@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+	<struts>
+		<constant name="struts.action.extension" value="action,,"></constant>
+		<!-- <constant name="struts.devMode" value="true"></constant> -->
+		<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+		<constant name="struts.objectFactory" value="spring"></constant>
+		<constant name="struts.objectFactory.spring.autoWire" value="name"></constant>
+		<package name="crm" namespace="/" extends="struts-default" >
+			<!-- 拦截器内容 -->
+			<interceptors>
+				<!-- 注册拦截器 -->
+				<!-- <interceptor name="LoginInterceptor" class="cn.zhku.interceptor.LoginInterceptor" /> -->
+				<interceptor-stack name="myStack">
+					<!-- <interceptor-ref name="LoginInterceptor">
+						<param name="excludeMethods">login,regist</param>
+					</interceptor-ref> -->
+					<interceptor-ref name="defaultStack"></interceptor-ref>
+				</interceptor-stack>
+			</interceptors>
+			<default-interceptor-ref name="myStack"></default-interceptor-ref>
+			
+			<global-results>
+				<result name="toLogin">/login.html</result>
+			</global-results>
+			<global-exception-mappings>
+				<exception-mapping result="error" exception="java.lang.RuntimeException">
+				</exception-mapping>
+				<exception-mapping result="error2" exception="java.lang.Exception"></exception-mapping>
+			</global-exception-mappings>
+			
+			<action name="UserAction_*" class="userAction" method="{1}">
+				<result name="success">/NewFileV3.0.jsp</result>
+				<result name="GuaHaoJsp">/GuaHao.jsp</result>
+				<result name="error">/login.html</result>
+				<!-- 注册失败回调注册页 -->
+				<result name="registerr">/regist.jsp</result>
+			</action>
+			
+			<!-- 配置CustomerAction -->
+			<action name="CustomerAction_*" class="customerAction" method="{1}">
+				<result name="list">/jsp/customer/list.jsp</result>
+				<!-- 因为我要增加完客户跳转到list.jsp但又不想筛选栏获取request域客户id回显，所以重定向到Action_list访问 -->
+				<result name="redirectToCustomerAction" type="redirect">CustomerAction_list</result>
+				<result name="toEdit">/jsp/customer/add.jsp</result>
+				<!-- 查询完industryCount的统计列表转发显示到industryCount.jsp中 -->
+				<result name="industryCount">/jsp/customer/industryCount.jsp</result>
+			</action>
+			
+			<!-- 配置BaseDictAction -->
+			<action name="BaseDictAction" class="baseDictAction" method="execute">
+				<result name="error">/login.jsp</result>
+			</action>
+			
+			<!-- 配置LinkMamAction -->
+			<action name="LinkManAction_*" class="linkManAction" method="{1}">
+				<!-- 修改页面提交一个id到edit方法后，返回一条id记录的对象，属性放入add。jsp页面中 -->
+				<result name="edit">/jsp/linkman/add.jsp</result>
+				<!-- 修改或则添加后，都重定向到List方法封装好pageBean -->
+				<result name="toList" type="redirectAction">
+					<param name="namespace">/</param>
+					<param name="actionName">LinkManAction_list</param>
+				</result>
+				<!-- 返回把封装好的pageBean返回到list。jsp -->
+				<result name="list">/jsp/linkman/list.jsp</result>
+				<result name="error">/jsp/linkman/list.jsp</result>
+			</action>
+			
+			<!-- 配置SaleVisitAction -->
+			<action name="SaleVisitAction_*" class="saleVisitAction" method="{1}">
+				<result name="toList" type="redirectAction">
+					<param name="namespace">/</param>
+					<param name="actionName">SaleVisitAction_list</param>
+				</result>
+				<result name="list">/jsp/salevisit/list.jsp</result>
+				<result name="error2">/jsp/linkman/list.jsp</result>
+				<result name="error">/jsp/linkman/list.jsp</result>
+				<!-- 修改方法调到add.jsp页面 -->
+				<result name="add">/jsp/salevisit/add.jsp</result>
+			</action>
+			
+			<!-- 配置RegistrationAction -->
+			<action name="RegistrationAction_*" class="registrationAction" method="{1}" >
+				<result name="error">/NewFile.jsp</result>
+				<result name="index">/NewFileV3.0.jsp</result>
+			</action>
+			<!-- 配置PatientMessageAction -->
+			<action name="PatientMessageAction_*" class="patientMessageAction" method="{1}">
+				<result name="success">/fright2.jsp</result>
+			</action>
+			<!-- 配置DayMessageAction -->
+			<action name="DayMessageAction_*" class="dayMessageAction" method="{1}">
+				<result name="success">/DayMessagefright3.jsp</result>
+			</action>
+			<!-- 配置DayMessageAction -->
+			<action name="DrugMessageAction_*" class="drugMessageAction" method="{1}">
+				<result name="success">/DrugMessagefright4.jsp</result>
+			</action>
+			<!-- 配置GuaHaoAction -->
+			<action name="GuaHaoAction_*" class="guaHaoAction" method="{1}">
+				<result name="success" type="redirect">/GuaHao.jsp?success</result>
+				<result name="fail" type="redirect">/GuaHao.jsp?fail</result>
+				<result name="finnishFinding">/GuaHao.jsp</result>
+				<result name="none" type="redirect">/GuaHao.jsp?none</result>
+			</action>
+			
+			<!-- 配置AjaxRegistration -->
+			<action name="AjaxRegistration_*" class="ajaxRegistration" method="{1}">
+			</action>
+			<!-- 配置AjaxDiseaseType -->
+			<action name="AjaxDiseaseType_*" class="ajaxDiseaseType" method="{1}">
+			</action>
+			<!-- 配置AjaxPrescription -->
+			<action name="AjaxPrescription_*" class="ajaxPrescription" method="{1}">
+			</action>
+			<!-- 配置AjaxCmedicine -->
+			<action name="AjaxCmedicine_*" class="ajaxCmedicine" method="{1}">
+			</action>
+			<!-- 配置AjaxDiagnose -->
+			<action name="AjaxDiagnose_*" class="ajaxDiagnose" method="{1}">
+			</action>
+			
+		</package>
+	</struts>

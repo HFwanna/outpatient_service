@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="DrugMessage" table="ops_drugmessage">
+    		<id name="drug_id" column="drug_id">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="drug_name" column="drug_name">
+    		</property>
+    		<property name="drug_message" column="drug_message"></property>
+    		<property name="drug_repertory" column="drug_repertory"></property>
+    		<property name="drug_price" column="drug_price"></property>
+    		<property name="drug_type" column="drug_type"></property>
+    		<property name="drug_standard" column="drug_standard"></property>
+    		
+    		<!-- 配置药品表一对多处方 -->
+    		<set name="prescriptions" cascade="save-update" inverse="true">
+    			<key column="drug_id"></key>
+    			<one-to-many class="Prescription"/>
+    		</set>
+    		
+    	</class>
+    </hibernate-mapping>

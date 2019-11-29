@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="cn.zhku.domain">
+    	<class name="DiseaseType" table="ops_diseasetype">
+    		<id name="dis_id" column="dis_id">
+    			<generator class="native"></generator>
+    		</id>
+    		<!-- 可选java类型:type="java.lang.String" hibernate类型:type="string" 
+    			not-null:配置该属性列是否不能为空，默认：false（即可以为空）
+    			length:配置数据库列的长度。默认值：当前数据库类型最大长度
+    			column：默认使用属性名，即使用name的名字
+    		-->
+    		<property name="dis_type" column="dis_type">
+    			<!--数据库类型: <column name="cust_name" sql-type="varchar"></column> -->
+    		</property>
+    		<property name="dis_restri_extra" column="dis_restri_extra"></property>
+    		<property name="dis_resi_extra" column="dis_resi_extra"></property>
+    		<property name="dis_diagnose" column="dis_diagnose"></property>
+    		<property name="dis_doctor" column="dis_doctor"></property>
+    		<property name="dis_time" column="dis_time"></property>
+    		<property name="dis_description" column="dis_description"></property>
+    		
+    		<!-- 表示医生诊断多对一挂号病人 -->
+    		<many-to-one name="registration" column="reg_id" class="Registration"></many-to-one>
+    		<!-- 表示诊断多对一医生工号 -->
+    		<many-to-one name="doctor" column="doc_id" class="Doctor"></many-to-one>
+    		
+    	</class>
+    </hibernate-mapping>

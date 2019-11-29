@@ -1,0 +1,13 @@
+{                                                      
+	"total":4,                                                      
+	"rows":[                                                          
+		{"ck":"1","pre_id":"","pre_drug_id":"1","pre_drug_name":"999感冒灵","pre_drug_standard":"10包装","pre_mg":"一次一包",
+		"pre_unit":"10包/盒","pre_pathway":"口服","pre_frequency":"一日三次","pre_days":"3天","pre_totalCount":"1","pre_drug_price":"28"},         
+		{"ck":"2","pre_id":"","pre_drug_id":"2","pre_drug_name":"仙特明","pre_drug_standard":"10粒装","pre_mg":"一次一粒",
+		"pre_unit":"10粒装","pre_pathway":"口服","pre_frequency":"一日一次","pre_days":"10天","pre_totalCount":"1","pre_drug_price":"39"},         
+		{"ck":"3","pre_id":"","pre_drug_id":"3","pre_drug_name":"小柴胡","pre_drug_standard":"12包装","pre_mg":"一次一包",
+		"pre_unit":"15包装","pre_pathway":"口服","pre_frequency":"每日两次","pre_days":"3天","pre_totalCount":"1","pre_drug_price":"18"},         
+		{"ck":"4","pre_id":"","pre_drug_id":"4","pre_drug_name":"众生丸","pre_drug_standard":"50颗装","pre_mg":"一次5粒",
+		"pre_unit":"100粒装","pre_pathway":"口服","pre_frequency":"每日两次","pre_days":"3天","pre_totalCount":"1","pre_drug_price":"35"}         
+	]                                                          
+} 
